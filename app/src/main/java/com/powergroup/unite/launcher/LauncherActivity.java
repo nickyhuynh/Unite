@@ -3,6 +3,8 @@ package com.powergroup.unite.launcher;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
+import com.facebook.AccessToken;
+import com.facebook.FacebookSdk;
 import com.powergroup.unite.R;
 import com.powergroup.unite.app.GenericActivity;
 
@@ -36,7 +38,11 @@ public class LauncherActivity extends GenericActivity {
 
             @Override
             public void onFinish() {
-                navigateToMain();
+                if(AccessToken.getCurrentAccessToken() != null) {
+                    navigateToMain();
+                } else {
+                    navigateToLogin();
+                }
             }
         }.start();
     }

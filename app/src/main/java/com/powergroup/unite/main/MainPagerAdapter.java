@@ -21,7 +21,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return Integer.toString(position);
+        return icons[position];
     }
 
 

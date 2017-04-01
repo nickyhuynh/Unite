@@ -22,6 +22,22 @@ public class UniteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_unite, container, false);
 
+        assignViews(rootView);
+        assignVariables(savedInstanceState);
+        assignHandlers();
+
         return rootView;
+    }
+
+    private void assignViews(View rootView) {
+
+    }
+
+    private void assignVariables(Bundle savedInstanceState) {
+
+    }
+
+    private void assignHandlers() {
+
     }
 }

@@ -1,5 +1,7 @@
 package com.powergroup.unite.app;
 
+import com.facebook.FacebookSdk;
+
 /**
  * Created by bummy on 4/1/17.
  */
@@ -21,5 +23,6 @@ public class Application extends android.app.Application {
         instance = this;
 
         //this is also where you should initialize things like firebase or facebook
+        FacebookSdk.sdkInitialize(this);
     }
 }
