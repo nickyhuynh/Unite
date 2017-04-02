@@ -40,7 +40,7 @@ public class LauncherActivity extends GenericActivity {
             public void onFinish() {
                 if(AccessToken.getCurrentAccessToken() != null) {
 //                    navigateToMain();
-                    navigateToQR();
+                    navigateToChat("050", "234");
                 } else {
                     navigateToLogin();
                 }
