@@ -44,14 +44,15 @@ public class LauncherActivity extends GenericActivity {
             @Override
             public void onFinish() {
                 if(AccessToken.getCurrentAccessToken() != null) {
-                    SharedPreferences preferences = getSharedPreferences("UNIFY", Context.MODE_PRIVATE);
-                    if(preferences.contains("profile_info")) {
-                        Log.d("Launcher", preferences.getString("profile_info", ""));
-                        Profile.INSTANCE.info = new Gson().fromJson(preferences.getString("profile_info", ""), Profile.ProfileInfo.class);
-                        navigateToMain();
-                    } else {
-                        navigateToCreateProfile();
-                    }
+//                    SharedPreferences preferences = getSharedPreferences("UNIFY", Context.MODE_PRIVATE);
+//                    if(preferences.contains("profile_info")) {
+//                        Log.d("Launcher", preferences.getString("profile_info", ""));
+//                        Profile.INSTANCE.info = new Gson().fromJson(preferences.getString("profile_info", ""), Profile.ProfileInfo.class);
+//                        navigateToMain();
+//                    } else {
+//                        navigateToCreateProfile();
+//                    }
+                    navigateToMain();
                 } else {
                     navigateToLogin();
                 }

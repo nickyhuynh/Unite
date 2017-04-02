@@ -16,6 +16,14 @@
         <item name="android:layout_marginBottom">10dp</item>
     </style>
 
+    <style name="VerticalDivider">
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
     <style name="DividerNoTopMargin">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
