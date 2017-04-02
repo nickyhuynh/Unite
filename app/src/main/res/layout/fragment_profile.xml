@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<Button-->
+    <!--android:id="@+id/edit_button"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="right"-->
+    <!--android:text="Edit"-->
+    <!--android:textSize="16sp"/>-->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="265dp"
+        android:background="@drawable/user_profile_gradient">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.powergroup.unite.app.CircularImageView
+                android:id="@+id/profile_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="50dp"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_image"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="14dp"
+                android:textCursorDrawable="@null"
+                android:textColor="#FFFFFF"
+                android:layout_centerHorizontal="true"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:fontFamily="sans-serif-bold"
+                android:textSize="24sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <View style="@style/DividerNoTopMargin"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/age_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age: "
+            android:fontFamily="sans-serif-medium"
+            android:textSize="16sp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/user_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/age_label"
+            android:background="@android:color/transparent"
+            android:fontFamily="sans-serif-light"
+            android:maxLength="3"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <View style="@style/Divider"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp" >
+
+        <TextView
+            android:id="@+id/bio_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bio: "
+            android:layout_centerVertical="true"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="16sp"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/user_bio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:maxLength="200"
+            android:background="@android:color/transparent"
+            android:textSize="16sp"
+            android:layout_gravity="left|center_vertical"
+            android:layout_toRightOf="@id/bio_label"
+            android:layout_marginRight="10dp"
+            />
+
+    </RelativeLayout>
+
+    <View style="@style/Divider"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/gender_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender: "
+            android:fontFamily="sans-serif-medium"
+            android:textSize="16sp"
+            android:layout_gravity="left"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textSize="16dp"
+            android:layout_toRightOf="@id/gender_label"
+            android:layout_marginRight="10dp"/>
+
+    </RelativeLayout>
+
+    <View style="@style/Divider"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/country_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nation: "
+            android:fontFamily="sans-serif-medium"
+            android:textSize="16sp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/countries_list"
+            android:layout_toRightOf="@id/country_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-light"
+            android:background="@android:color/transparent"
+            android:layout_marginRight="10dp"
+            />
+
+    </RelativeLayout>
+
+    <View style="@style/Divider"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ethnicities_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ethnicity(s): "
+            android:fontFamily="sans-serif-medium"
+            android:textSize="16sp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"/>
+
+
+        <TextView
+            android:id="@+id/ethnicities_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:background="@android:color/transparent"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/ethnicities_label"
+            android:layout_marginRight="10dp"/>
+
+    </RelativeLayout>
+
+    <View style="@style/Divider"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/languages_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Language(s): "
+            android:fontFamily="sans-serif-medium"
+            android:textSize="16sp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"/>
+
+
+        <TextView
+            android:id="@+id/languages_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords|textMultiLine"
+            android:hint="Enter the languages you speak"
+            android:fontFamily="sans-serif-light"
+            android:background="@android:color/transparent"
+            android:textSize="16sp"
+            android:imeOptions="actionDone"
+            android:layout_toRightOf="@id/languages_label"
+            android:layout_marginRight="10dp"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

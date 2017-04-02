@@ -23,6 +23,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.powergroup.unite.R;
 import com.powergroup.unite.app.Application;
@@ -36,6 +37,9 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Elise on 4/2/2017.
@@ -163,8 +167,8 @@ public class CreateProfileActivity extends GenericActivity {
                 String age = userAge.getText().toString();
                 String bio = userBio.getText().toString();
                 String nation = userCountry.getText().toString();
-                String[] ethnicities = multi.getText().toString().split(",");
-                String[] languages = simpleMultiAutoCompleteTextView.getText().toString().split(",");
+                String[] ethnicities = multi.getText().toString().replace(",", " ").replaceAll(" +", " ").split(" ");
+                String[] languages = simpleMultiAutoCompleteTextView.getText().toString().replace(",", " ").replaceAll(" +", " ").split(" ");
 //                com.facebook.Profile profile = com.facebook.Profile.getCurrentProfile();
 //                String id = profile.getId();
 
@@ -176,9 +180,17 @@ public class CreateProfileActivity extends GenericActivity {
                         nation.length() > 0 &&
                         ethnicities.length > 0 &&
                         languages.length > 0) {
-                    Profile.INSTANCE.info.setInfo(name, age, bio, nation, ethnicities, languages, profileImg, id);
+                    Profile.INSTANCE.info.setInfo(name, age, bio, nation, genderSpinner.getSelectedItem().toString(), ethnicities, languages, profileImg, id, new HashMap<String, Profile.ProfileInfo>(), new ArrayList<String>());
                     SharedPreferences preferences = getSharedPreferences("UNIFY", Context.MODE_PRIVATE);
                     preferences.edit().putString("profile_info", new Gson().toJson(Profile.INSTANCE.info)).apply();
+                    Map<String, Profile.ProfileInfo> map = new HashMap<>();
+
+                    try {
+                        map.put(id, Profile.INSTANCE.info);
+                        FirebaseDatabase.getInstance().getReference().child("/profiles").setValue(map);
+                    } catch (Exception e) {
+                        Log.d("asdfasdf", e.getMessage());
+                    }
                     navigateToMain();
                 } else {
                     Toast.makeText(Application.getInstance(), "There are one or more fields that need filling in!", Toast.LENGTH_SHORT).show();
@@ -215,7 +227,7 @@ public class CreateProfileActivity extends GenericActivity {
 
     private static final String[] LANGUAGES = new String[]{
 
-            "Afrikanns", "Albanian", "Arabic", "Armenian", "Basque", "Bengali", "Bulgarian", "Catalan", "Cambodian", "Chinese (Mandarin)", "Croation", "Czech", "Danish",
+            "Afrikanns", "Albanian", "Arabic", "Armenian", "Basque", "Bengali", "Bulgarian", "Catalan", "Cambodian", "Mandarin", "Croation", "Czech", "Danish",
             "Dutch", "English", "Estonian", "Fiji", "Finnish", "French", "Georgian", "German", "Greek", "Gujarati", "Hebrew", "Hindi", "Hungarian", "Icelandic", "Indonesian",
             "Irish", "Italian", "Japanese", "Javanese", "Korean", "Latin", "Latvian", "Lithuanian", "Macedonian", "Malay", "Malayalam", "Maltese", "Maori", "Marathi",
             "Mongolian", "Nepali", "Norwegian", "Persian", "Polish", "Portuguese", "Punjabi", "Quechua", "Romanian", "Russian", "Samoan", "Serbian", "Slovak", "Slovenian",
