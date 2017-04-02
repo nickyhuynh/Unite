@@ -8,6 +8,7 @@ import android.util.Log;
 import com.powergroup.unite.login.LoginActivity;
 import com.powergroup.unite.main.MainActivity;
 import com.powergroup.unite.qr.QRActivity;
+import com.powergroup.unite.user_profile.CreateProfileActivity;
 
 /**
  * Created by bummy on 4/1/17.
@@ -41,11 +42,19 @@ public class GenericActivity extends FragmentActivity {
         finish();
     }
 
-    public void navigateToQR() {
-        Log.d(TAG, "Navigated to QR.");
+    public void navigateToCreateProfile() {
+        Log.d(TAG, "Navigated to Create Profile.");
         Intent intent = new Intent();
-        intent.setClass(Application.getInstance(), QRActivity.class);
+        intent.setClass(Application.getInstance(), CreateProfileActivity.class);
         startActivity(intent);
         finish();
     }
+
+//    public void navigateToQR() {
+//        Log.d(TAG, "Navigated to QR.");
+//        Intent intent = new Intent();
+//        intent.setClass(Application.getInstance(), QRActivity.class);
+//        startActivity(intent);
+//        finish();
+//    }
 }

@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">Unify</string>
     <string name="facebook_app_id">1737485496542057</string>
+
+    <string name="gender_prompt">Choose a gender</string>
+
+    <string-array name="gender_arrays">
+        <item>Female</item>
+        <item>Male</item>
+        <item>Non-binary/third gender</item>
+        <item>Other</item>
+        <item>Prefer not to say</item>
+    </string-array>
+
+    <string name="country_prompt">Enter a country</string>
+
 </resources>
+

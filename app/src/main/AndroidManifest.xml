@@ -24,6 +24,9 @@
         </activity>
 
         <activity android:name=".login.LoginActivity"/>
+        <activity android:name=".user_profile.UserProfile"/>
+        <activity android:name=".user_profile.EditProfileActivity"/>
+        <activity android:name=".user_profile.CreateProfileActivity"/>
         <activity android:name=".main.MainActivity"/>
         <activity android:name=".qr.QRActivity"/>
     </application>
