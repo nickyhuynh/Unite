@@ -27,25 +27,30 @@
                 android:id="@+id/back_button"
                 android:background="@drawable/back_logo"
                 android:backgroundTint="#FFF"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_alignParentLeft="true"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
-            <ImageView
+            <LinearLayout
                 android:id="@+id/confirm_button"
-                android:background="@drawable/checkmark_logo"
-                android:backgroundTint="#FFF"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_alignParentRight="true"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:gravity="center">
+
+                <ImageView
+                    android:background="@drawable/checkmark_logo"
+                    android:backgroundTint="#FFF"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
         </RelativeLayout>
 
         <RelativeLayout
@@ -67,8 +72,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="14dp"
                 android:hint="Enter your first name"
+                android:textCursorDrawable="@null"
                 android:maxLength="30"
                 android:textColorHint="#80FFFFFF"
+                android:imeOptions="actionDone"
                 android:textColor="#FFFFFF"
                 android:inputType="textCapWords"
                 android:layout_centerHorizontal="true"
@@ -102,16 +109,17 @@
 
         <EditText
             android:id="@+id/user_age"
-            android:inputType="numberSigned"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your age"
-            android:maxLength="3"
-            android:fontFamily="sans-serif-light"
-            android:background="@android:color/transparent"
-            android:textSize="16sp"
+            android:layout_marginRight="10dp"
             android:layout_toRightOf="@id/age_label"
-            android:layout_marginRight="10dp"/>
+            android:background="@android:color/transparent"
+            android:imeOptions="actionDone"
+            android:fontFamily="sans-serif-light"
+            android:hint="Enter your age"
+            android:inputType="numberSigned"
+            android:maxLength="3"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 
@@ -127,9 +135,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bio: "
+            android:layout_centerVertical="true"
             android:fontFamily="sans-serif-medium"
             android:textSize="16sp"
-            android:layout_gravity="left"
+            android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="10dp"
             />
 
@@ -139,10 +148,11 @@
             android:layout_height="wrap_content"
             android:hint="Enter a blurb about yourself (200 character limit)"
             android:fontFamily="sans-serif-light"
+            android:imeOptions="actionDone"
             android:maxLength="200"
             android:background="@android:color/transparent"
             android:textSize="16sp"
-            android:layout_gravity="left"
+            android:layout_gravity="left|center_vertical"
             android:layout_toRightOf="@id/bio_label"
             android:layout_marginRight="10dp"
             />
@@ -153,7 +163,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/gender_label"
@@ -163,6 +173,7 @@
             android:fontFamily="sans-serif-medium"
             android:textSize="16sp"
             android:layout_gravity="left"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             />
 
@@ -188,7 +199,7 @@
             android:id="@+id/country_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Country: "
+            android:text="Nation: "
             android:fontFamily="sans-serif-medium"
             android:textSize="16sp"
             android:layout_gravity="left"
@@ -204,8 +215,41 @@
             android:hint="Enter your country"
             android:fontFamily="sans-serif-light"
             android:background="@android:color/transparent"
+            android:imeOptions="actionDone"
             android:layout_marginRight="10dp"
             />
+
+    </RelativeLayout>
+
+    <View style="@style/Divider"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ethnicities_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ethnicity(s): "
+            android:fontFamily="sans-serif-medium"
+            android:textSize="16sp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"/>
+
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/ethnicities_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords|textMultiLine"
+            android:hint="Enter ethnicities you belong to"
+            android:fontFamily="sans-serif-light"
+            android:background="@android:color/transparent"
+            android:textSize="16sp"
+            android:imeOptions="actionDone"
+            android:layout_toRightOf="@id/ethnicities_label"
+            android:layout_marginRight="10dp"/>
 
     </RelativeLayout>
 
@@ -235,6 +279,7 @@
             android:fontFamily="sans-serif-light"
             android:background="@android:color/transparent"
             android:textSize="16sp"
+            android:imeOptions="actionDone"
             android:layout_toRightOf="@id/languages_label"
             android:layout_marginRight="10dp"/>
 

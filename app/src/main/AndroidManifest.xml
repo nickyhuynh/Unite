@@ -29,6 +29,8 @@
         <activity android:name=".user_profile.CreateProfileActivity"/>
         <activity android:name=".main.MainActivity"/>
         <activity android:name=".qr.QRActivity"/>
+        <activity android:name=".chat.ChatActivity"/>
+
     </application>
 
 </manifest>

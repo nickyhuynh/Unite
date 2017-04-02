@@ -2,6 +2,7 @@ package com.powergroup.unite.user_profile;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -75,7 +76,11 @@ public class EditProfileActivity extends GenericActivity {
 // set threshold value 1 that help us to start the searching from first character
         simpleMultiAutoCompleteTextView.setThreshold(1);
 // set tokenizer that distinguish the various substrings by comma
+
         simpleMultiAutoCompleteTextView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
     }
 
 

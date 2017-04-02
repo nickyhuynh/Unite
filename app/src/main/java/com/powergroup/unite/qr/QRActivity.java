@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -21,6 +22,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.powergroup.unite.R;
 import com.powergroup.unite.app.Application;
 import com.powergroup.unite.app.GenericActivity;
+import com.powergroup.unite.app.Profile;
 
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;
@@ -67,7 +69,7 @@ public class QRActivity extends GenericActivity {
 
     private void assignVariables(Bundle savedInstanceState) {
         try {
-            qrCode.setImageBitmap(createQR("ENCODE ME BICHES"));
+            qrCode.setImageBitmap(createQR(new Gson().toJson(Profile.INSTANCE.info)));
         } catch (Exception e) {
         }
     }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
+import com.powergroup.unite.chat.ChatActivity;
 import com.powergroup.unite.login.LoginActivity;
 import com.powergroup.unite.main.MainActivity;
 import com.powergroup.unite.qr.QRActivity;
@@ -50,11 +51,21 @@ public class GenericActivity extends FragmentActivity {
         finish();
     }
 
-//    public void navigateToQR() {
-//        Log.d(TAG, "Navigated to QR.");
-//        Intent intent = new Intent();
-//        intent.setClass(Application.getInstance(), QRActivity.class);
-//        startActivity(intent);
-//        finish();
-//    }
+    public void navigateToQR() {
+        Log.d(TAG, "Navigated to QR.");
+        Intent intent = new Intent();
+        intent.setClass(Application.getInstance(), QRActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void navigateToChat(String id1, String id2) {
+        Log.d(TAG, "Navigated to chat.");
+        Intent intent = new Intent();
+        intent.setClass(Application.getInstance(), ChatActivity.class);
+        String key = "";
+        key = (id1.compareTo(id2) > 0) ? (id1 + '-' + id2) : (id2 + '-' + id1);
+        intent.putExtra("convo_key", key);
+        startActivity(intent);
+    }
 }

@@ -6,25 +6,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#efead7"/>
+        android:background="#dddddd"/>
 
-    <View
-        android:id="@+id/handshake"
-        android:layout_marginTop="350dp"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@drawable/handshake"
-        android:alpha="1"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="Unite"
-        android:textSize="120dp"
-        android:textColor="#333"
-        android:fontFamily="sans-serif-light"
-        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>
