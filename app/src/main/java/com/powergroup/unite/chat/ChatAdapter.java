@@ -4,16 +4,12 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.powergroup.unite.R;
-import com.powergroup.unite.app.GenericActivity;
-import com.powergroup.unite.dto.MessagesDTO;
+import com.powergroup.unite.dto.Message;
 
 import java.util.ArrayList;
 
@@ -23,7 +19,7 @@ import java.util.ArrayList;
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     private final String TAG = "ChatAdapter";
 
-    private ArrayList<MessagesDTO.Message> dataSet;
+    private ArrayList<Message> dataSet;
     private String owner;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -42,7 +38,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         }
     }
 
-    public ChatAdapter(ArrayList<MessagesDTO.Message> dataSet, String owner) {
+    public ChatAdapter(ArrayList<Message> dataSet, String owner) {
         this.dataSet = dataSet;
         this.owner = owner;
     }
@@ -57,18 +53,16 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        MessagesDTO.Message message = dataSet.get(position);
+        Message message = dataSet.get(position);
 
-//        Log.d()
+        if(message.sender.equals(owner)) {
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)holder.cardView.getLayoutParams();
+            params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 
-//        if(message.sender.equals(owner)) {
-//            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)holder.cardView.getLayoutParams();
-//            params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-//
-//            holder.cardView.setLayoutParams(params);
-//        }
-//
-//        holder.message.setText(message.message);
+            holder.cardView.setLayoutParams(params);
+        }
+
+        holder.message.setText(message.message);
     }
 
     @Override
@@ -76,18 +70,25 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         return dataSet.size();
     }
 
-    public void setDataSet(ArrayList<MessagesDTO.Message> messages) {
+    public void setDataSet(ArrayList<Message> messages) {
         this.dataSet = messages;
     }
 
-    public void addMessage(MessagesDTO.Message message) {
+    public void addMessage(Message message) {
         Log.d(TAG, message.message + "");
         dataSet.add(message);
         notifyItemInserted(dataSet.size()-1);
     }
 
-    public MessagesDTO.Message getItem(int position) {
+    public Message getItem(int position) {
         return dataSet.get(position);
+    }
+
+    public long getLast() {
+        if(dataSet.size() == 0) {
+            return 0;
+        }
+        return dataSet.get(dataSet.size()-1).getTimestamp()+1;
     }
 
 }

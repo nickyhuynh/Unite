@@ -6,16 +6,22 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.powergroup.unite.R;
 import com.powergroup.unite.app.GenericActivity;
-import com.powergroup.unite.dto.MessagesDTO;
+import com.powergroup.unite.dto.Message;
 
+import java.sql.Time;
 import java.util.ArrayList;
 
 /**
@@ -40,6 +46,11 @@ public class ChatActivity extends GenericActivity {
     private String chatroom;
     private DatabaseReference database;
 
+    private TextView sendButton;
+    private EditText messageField;
+
+    private String owner;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,16 +66,21 @@ public class ChatActivity extends GenericActivity {
         assignViews();
         assignVariables(savedInstanceState);
         assignHandlers();
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
     }
 
     private void assignViews() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        sendButton = (TextView) findViewById(R.id.send_button);
+        messageField = (EditText)findViewById(R.id.message_field);
     }
 
     private void assignVariables(Bundle savedInstanceState) {
-        String owner = "050";
+        owner = "050";
         layoutManager = new LinearLayoutManager(this);
-        chatAdapter = new ChatAdapter(new ArrayList<MessagesDTO.Message>(), owner);
+        chatAdapter = new ChatAdapter(new ArrayList<Message>(), owner);
         currentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
 
         if (savedInstanceState != null) {
@@ -82,21 +98,41 @@ public class ChatActivity extends GenericActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if(!dataSnapshot.exists()) {
-                    MessagesDTO.Message message = new MessagesDTO.Message();
-                    message.message = "Hi there!";
+                    Message message = new Message();
+                    message.message = "Hi there from Unify! This is an automated message that marks the beginning of your conversation with your new friend!";
                     message.sender = "Unify";
-                    message.timestamp = "00:00:00";
+                    message.timestamp = System.currentTimeMillis();
                     database.push().setValue(message);
+                }
+
+                for(DataSnapshot message : dataSnapshot.getChildren()) {
+                    Log.d(TAG, message.getKey()+"");
+                    Log.d(TAG, message.getValue()+"");
+                    Message mem = message.getValue(Message.class);
+                    chatAdapter.addMessage(mem);
                 }
 
                 ValueEventListener messageListener = new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // Get Post object and use the values to update the UI
-                        Log.d(TAG, dataSnapshot.getKey());
-                        Log.d(TAG, dataSnapshot.getValue().toString());
-                        MessagesDTO.Message message = dataSnapshot.getValue(MessagesDTO.Message.class);
-                        chatAdapter.addMessage(message);
+                        database.orderByChild("timestamp").startAt(chatAdapter.getLast()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for(DataSnapshot message : dataSnapshot.getChildren()) {
+                                    Message mem = message.getValue(Message.class);
+                                    chatAdapter.addMessage(mem);
+                                    recyclerView.smoothScrollToPosition(recyclerView.getAdapter().getItemCount());
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+
                         // ...
                     }
 
@@ -118,7 +154,19 @@ public class ChatActivity extends GenericActivity {
     }
 
     private void assignHandlers() {
-
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!messageField.getText().toString().isEmpty()) {
+                    Message message = new Message();
+                    message.message = messageField.getText().toString();
+                    message.sender = "050";
+                    message.timestamp = System.currentTimeMillis();
+                    database.push().setValue(message);
+                    messageField.getText().clear();
+                }
+            }
+        });
     }
 
     public void setRecyclerViewLayoutManager(LayoutManagerType layoutManagerType) {
