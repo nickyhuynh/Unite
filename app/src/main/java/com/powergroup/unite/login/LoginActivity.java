@@ -63,6 +63,7 @@ public class LoginActivity extends GenericActivity {
 
             @Override
             public void onError(FacebookException error) {
+                Log.d(TAG, "Message: " + error.getMessage());
                 Toast.makeText(Application.getInstance(), "Hey there! Looks like there was some error with your Facebook login. Please try again!", Toast.LENGTH_SHORT).show();
             }
         });
