@@ -58,7 +58,6 @@ public class GenericActivity extends FragmentActivity {
         startActivity(intent);
         finish();
     }
-
     public void navigateToChat(String id1, String id2) {
         Log.d(TAG, "Navigated to chat.");
         Intent intent = new Intent();
