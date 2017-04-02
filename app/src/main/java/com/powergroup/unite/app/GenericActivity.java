@@ -50,11 +50,11 @@ public class GenericActivity extends FragmentActivity {
         finish();
     }
 
-//    public void navigateToQR() {
-//        Log.d(TAG, "Navigated to QR.");
-//        Intent intent = new Intent();
-//        intent.setClass(Application.getInstance(), QRActivity.class);
-//        startActivity(intent);
-//        finish();
-//    }
+    public void navigateToQR() {
+        Log.d(TAG, "Navigated to QR.");
+        Intent intent = new Intent();
+        intent.setClass(Application.getInstance(), QRActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

@@ -53,7 +53,8 @@ public class LoginActivity extends GenericActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "Logged in!");
-                navigateToCreateProfile();
+//                navigateToCreateProfile();
+                navigateToMain();
             }
 
             @Override
