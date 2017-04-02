@@ -1,121 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_centerHorizontal="true"
-    android:weightSum="1"
-    android:layout_below="@+id/tabs">
+    android:layout_height="match_parent">
 
-    <com.powergroup.unite.app.CircularImageView
-        android:layout_width="172dp"
-        android:layout_height="194dp"
-        android:id="@+id/imageView"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/question_mark"
-        android:background="#00ffffff" />
-
-    <RelativeLayout
+    <com.powergroup.unite.app.SlidingTabLayout
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:gravity="center_horizontal">
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Ethnicity"
-            android:id="@+id/textView"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:layout_below="@id/tabs"
+        android:background="@drawable/upper_shadow"
+        android:id="@+id/view" />
 
-        <TextView
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView5"
-            android:layout_below="@+id/textView"
-            android:layout_alignStart="@+id/textView" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Nation"
-            android:id="@+id/textView2"
-            android:layout_marginStart="83dp"
-            android:layout_above="@+id/textView6"
-            android:layout_toEndOf="@+id/textView5" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView6"
-            android:layout_alignBottom="@+id/textView5"
-            android:layout_alignStart="@+id/textView2" />
-    </RelativeLayout>
-
-    <RelativeLayout
+    <android.support.v4.view.ViewPager
+        android:layout_below="@id/tabs"
+        android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="76dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Bio"
-            android:id="@+id/textView3"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView4"
-            android:layout_below="@+id/textView3"
-            android:layout_centerHorizontal="true" />
-
-    </RelativeLayout>
+        android:layout_height="match_parent"/>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="246dp"
-        android:gravity="center_horizontal"
-        android:weightSum="1">
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:weightSum="1"
+        android:layout_below="@+id/tabs">
 
-        <ImageButton
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="245dp"
+            android:gravity="center"
+            android:background="@drawable/la_pano"
+            android:focusable="false">
+
+            <ImageView
+                android:layout_marginTop="25dp"
+                android:layout_width="172dp"
+                android:layout_height="194dp"
+                android:id="@+id/imageView"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/question_mark"
+                android:background="#00ffffff" />
+
+        </RelativeLayout>
+
+        <View style="@style/DividerNoTopMargin"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pass"
-            android:id="@+id/button"
-            android:layout_below="@+id/textView3"
-            android:layout_alignEnd="@+id/textView3"
-            android:layout_marginRight="50dp"
-            android:src="@drawable/cancel"
-            android:background="#00ffffff" />
-        <ImageButton
-            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/layout_gender"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="16sp"
+                android:id="@+id/gender_label"
+                android:layout_gravity="center"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="sans-serif-light"
+                android:textSize="16sp"
+                android:id="@+id/user_gender"
+                android:layout_below="@+id/gender_label"
+                />
+
+        </LinearLayout>
+
+        <View style="@style/BiggerDivider"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Meetup"
-            android:id="@+id/button2"
-            android:layout_below="@+id/textView3"
-            android:layout_toEndOf="@+id/textView3"
-            android:src="@drawable/message"
-            android:background="#00ffffff" />
+            android:orientation="vertical"
+            android:id="@+id/layout_bio"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bio"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="16sp"
+                android:id="@+id/bio_label"
+                android:layout_gravity="center"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="sans-serif-light"
+                android:textSize="16sp"
+                android:id="@+id/user_bio"
+                android:layout_below="@id/bio_label"
+                />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
+
+            <View
+                android:id="@+id/center_block"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_centerHorizontal="true"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:id="@+id/reject"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:text="Not right now!"
+                android:layout_toLeftOf="@id/center_block"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:background="@drawable/border"/>
+
+            <TextView
+                android:id="@+id/accept"
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:text="Send a message!"
+                android:layout_toRightOf="@id/center_block"
+                android:background="@drawable/border"/>
+
+        </RelativeLayout>
+
     </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>
