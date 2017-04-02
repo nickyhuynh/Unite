@@ -34,6 +34,9 @@ public enum Profile {
         public HashMap<String, ProfileInfo> friends;
         public List<String> history;
 
+        public ProfileInfo() {
+        }
+
         public ProfileInfo(String name, String age, String bio, String nation, String gender, String[] ethnicities, String[] languages, String pic, String id) {
             this.name = name;
             this.age = age;

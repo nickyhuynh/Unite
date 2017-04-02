@@ -18,6 +18,8 @@ import com.powergroup.unite.app.Profile;
 import com.powergroup.unite.chat.ChatActivity;
 import com.powergroup.unite.main.MainActivity;
 
+import java.util.Random;
+
 /**
  * Created by bummy on 4/1/17.
  */
@@ -59,15 +61,17 @@ public class UnifyFragment extends Fragment {
         FirebaseDatabase.getInstance().getReference().child("/profiles").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int randomNum = 0 + (int)(Math.random() * dataSnapshot.getChildrenCount());
+//                int randomNum = new Random().nextInt((int)(Math.random() * dataSnapshot.getChildrenCount()));
                 int i = 0;
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    if(i == randomNum) {
+                    if(i == 0) {
                         Profile.ProfileInfo info = snapshot.getValue(Profile.ProfileInfo.class);
                         gender.setText(info.gender);
                         bio.setText(info.bio);
                         id = info.id;
+                        break;
                     }
+                    i++;
                 }
             }
 
