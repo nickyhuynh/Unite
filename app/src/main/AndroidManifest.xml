@@ -25,6 +25,7 @@
 
         <activity android:name=".login.LoginActivity"/>
         <activity android:name=".main.MainActivity"/>
+        <activity android:name=".qr.QRActivity"/>
     </application>
 
 </manifest>

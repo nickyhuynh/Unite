@@ -39,7 +39,8 @@ public class LauncherActivity extends GenericActivity {
             @Override
             public void onFinish() {
                 if(AccessToken.getCurrentAccessToken() != null) {
-                    navigateToMain();
+//                    navigateToMain();
+                    navigateToQR();
                 } else {
                     navigateToLogin();
                 }

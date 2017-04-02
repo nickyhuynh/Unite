@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.powergroup.unite.login.LoginActivity;
 import com.powergroup.unite.main.MainActivity;
+import com.powergroup.unite.qr.QRActivity;
 
 /**
  * Created by bummy on 4/1/17.
@@ -33,9 +34,17 @@ public class GenericActivity extends FragmentActivity {
 
     public void navigateToMain() {
         //starts new activity and navigates to main
-        Log.d(TAG, "Navigated to login.");
+        Log.d(TAG, "Navigated to main.");
         Intent intent = new Intent();
         intent.setClass(Application.getInstance(), MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void navigateToQR() {
+        Log.d(TAG, "Navigated to QR.");
+        Intent intent = new Intent();
+        intent.setClass(Application.getInstance(), QRActivity.class);
         startActivity(intent);
         finish();
     }
