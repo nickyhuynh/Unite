@@ -74,7 +74,7 @@ public class MainActivity extends GenericActivity {
         pager.setOffscreenPageLimit(3);
 
         //basically creates adapter and sets titles
-        String[] titles = {"Unite", "History", "Profile"};
+        String[] titles = {"Unify", "History", "Profile"};
         mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), fragments, titles);
         pager.setAdapter(mainPagerAdapter);
         tabs.setViewPager(pager);

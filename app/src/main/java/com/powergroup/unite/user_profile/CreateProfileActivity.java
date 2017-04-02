@@ -172,6 +172,7 @@ public class CreateProfileActivity extends GenericActivity {
 //                com.facebook.Profile profile = com.facebook.Profile.getCurrentProfile();
 //                String id = profile.getId();
 
+                id = "0";
                 Log.d("zxcvzxcv", "id: " + id);
 
                 if(name.length() > 0 &&
@@ -183,11 +184,11 @@ public class CreateProfileActivity extends GenericActivity {
                     Profile.INSTANCE.info.setInfo(name, age, bio, nation, genderSpinner.getSelectedItem().toString(), ethnicities, languages, profileImg, id, new HashMap<String, Profile.ProfileInfo>(), new ArrayList<String>());
                     SharedPreferences preferences = getSharedPreferences("UNIFY", Context.MODE_PRIVATE);
                     preferences.edit().putString("profile_info", new Gson().toJson(Profile.INSTANCE.info)).apply();
-                    Map<String, Profile.ProfileInfo> map = new HashMap<>();
+//                    Map<String, Profile.ProfileInfo> map = new HashMap<>();
 
                     try {
-                        map.put(id, Profile.INSTANCE.info);
-                        FirebaseDatabase.getInstance().getReference().child("/profiles").setValue(map);
+//                        map.put(id, Profile.INSTANCE.info);
+                        FirebaseDatabase.getInstance().getReference().child("/profiles").child(id).setValue(Profile.INSTANCE.info);
                     } catch (Exception e) {
                         Log.d("asdfasdf", e.getMessage());
                     }
