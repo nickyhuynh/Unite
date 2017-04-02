@@ -19,6 +19,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.powergroup.unite.R;
 import com.powergroup.unite.app.GenericActivity;
+import com.powergroup.unite.app.Profile;
 import com.powergroup.unite.dto.Message;
 
 import java.sql.Time;
@@ -78,7 +79,7 @@ public class ChatActivity extends GenericActivity {
     }
 
     private void assignVariables(Bundle savedInstanceState) {
-        owner = "050";
+        owner = Profile.INSTANCE.info.id;
         layoutManager = new LinearLayoutManager(this);
         chatAdapter = new ChatAdapter(new ArrayList<Message>(), owner);
         currentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
@@ -160,7 +161,7 @@ public class ChatActivity extends GenericActivity {
                 if(!messageField.getText().toString().isEmpty()) {
                     Message message = new Message();
                     message.message = messageField.getText().toString();
-                    message.sender = "050";
+                    message.sender = Profile.INSTANCE.info.id;
                     message.timestamp = System.currentTimeMillis();
                     database.push().setValue(message);
                     messageField.getText().clear();
