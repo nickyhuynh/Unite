@@ -3,6 +3,8 @@ package com.powergroup.unite.main;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.powergroup.unite.R;
 import com.powergroup.unite.app.GenericActivity;
@@ -30,6 +32,7 @@ public class MainActivity extends GenericActivity {
         assignViews();
         assignVariables(savedInstanceState);
         assignHandlers();
+
     }
 
     private void assignViews() {
