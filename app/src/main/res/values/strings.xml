@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Unify</string>
-    <string name="facebook_app_id">1737485496542057</string>
+    <string name="facebook_app_id">FB_APP_ID_HERE</string>
 
     <string name="gender_prompt">Choose a gender</string>
 
